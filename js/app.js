@@ -1,4 +1,9 @@
 (() => {
+  const pedidoTexto = sessionStorage.getItem('cafeConfiancaPedidoTexto');
+  if (pedidoTexto) {
+    const mensagem = document.querySelector('#form textarea[name="msg"]');
+    if (mensagem) mensagem.value = pedidoTexto;
+  }
   const WA = '258841056999';
   const form = document.getElementById('form'), err = document.getElementById('err');
   form.addEventListener('submit', e => {
@@ -13,7 +18,8 @@
     window.open(`https://wa.me/${WA}?text=${encodeURIComponent(linhas.join('\n'))}`, '_blank', 'noopener');
   });
   const lb = document.getElementById('lb'), big = lb.querySelector('img');
-  document.querySelector('.masonry').addEventListener('click', e => {
+  const masonry = document.querySelector('.masonry');
+  if (masonry) masonry.addEventListener('click', e => {
     if (e.target.tagName !== 'IMG') return;
     big.src = e.target.src; big.alt = e.target.alt; lb.showModal();
   });
