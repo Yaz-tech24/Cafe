@@ -14,7 +14,7 @@ services:
       - path: /*
         name: Referrer-Policy
         value: strict-origin-when-cross-origin
-      - path: /img/*
+      - path: /images/*
         name: Cache-Control
         value: public, max-age=31536000, immutable
       - path: /*.css
